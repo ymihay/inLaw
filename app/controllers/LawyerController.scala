@@ -16,7 +16,7 @@ import scala.Some
 /**
  * Created by pitbul on 11/23/14.
  */
-@Api(value = "/account", description = "Operations with account")
+@Api(value = "/lawyers", description = "Operations with account")
 object LawyerController extends Controller with UserAccountForms {
 
   @ApiOperation(
@@ -30,7 +30,7 @@ object LawyerController extends Controller with UserAccountForms {
     new ApiResponse(code = 400, message = "Email already exist"),
     new ApiResponse(code = 500, message = "DB connection error")))
   @ApiImplicitParams(Array(
-    new ApiImplicitParam(value = "Account object that need to be created", required = true, dataType = "forms.UserAccountInfo", paramType = "body")))
+    new ApiImplicitParam(value = "Account object that need to be created", required = true, dataType = "models.swagger.UserAccountInfo", paramType = "body")))
   def createAccount = Action.async {
     implicit request => {
       createAccountForm.bindFromRequest fold (

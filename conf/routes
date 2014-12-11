@@ -2,13 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                           controllers.Application.index
+GET         /api-docs.json                      controllers.ApiHelpController.getResources
+GET         /swagger                            controllers.Application.swagger
 
-GET     /api-docs                   controllers.ApiHelpController.getResources
+GET         /api-docs.json/lawyers              controllers.ApiHelpController.getResource(path = "/lawyers")
+POST        /lawyers                            controllers.LawyerController.createAccount
 
-GET     /api-docs/lawyers           controllers.ApiHelpController.getResource(path = "/lawyers")
-POST    /lawyers                    controllers.LawyerController.createAccount
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file                       controllers.Assets.at(path="/public", file)
